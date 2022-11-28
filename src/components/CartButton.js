@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View,  } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-export const CartButton=({onPress})=> <Ionicons onPress={onPress} name="cart" size={32}  />
+export const CartButton=({onPress, disabled})=> <Ionicons color={disabled ? 'lightgray' : 'red'} disabled={disabled} onPress={onPress} name="cart" size={20}  />
 
 

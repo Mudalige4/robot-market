@@ -4,14 +4,29 @@ import { CartButton } from '../CartButton'
 import { ListItem } from '../ShpoingItem/ListItem'
 
 export const ShoppingList = ({
-    isLoading,robotList
+    isLoading,robotsList,
+    onPressAddToCart
 }) => {
+
+    function renderItem({item}, index){
+  
+        return <ListItem name={item.name}
+        image={item.image}
+        price={item.price}
+        stock={item.stock}
+        createdAt={item.createdAt}
+        material={item.material}
+        onPressAddToCart={onPressAddToCart}
+        />
+    }
+
     return (
         <FlatList
         ListEmptyComponent={isLoading ? <ActivityIndicator/> : null}
         keyExtractor={item=>item.name}
-            data={robotList}
-            renderItem={ListItem}
+            data={robotsList}
+            renderItem={renderItem}
+            numColumns={2}
         />
     );
 }
