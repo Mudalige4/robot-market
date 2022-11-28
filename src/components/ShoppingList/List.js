@@ -1,11 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { ActivityIndicator, FlatList, StyleSheet, Text, View } from 'react-native';
 import { CartButton } from '../CartButton'
+import FilterDropdown from '../FilterDropdown';
 import { ListItem } from '../ShpoingItem/ListItem'
 
 export const ShoppingList = ({
     isLoading,robotsList,
-    onPressAddToCart,isCart,onPressAddFromCart,onPressRemoveFromCart
+    onPressAddToCart,isCart,onPressAddFromCart,onPressRemoveFromCart,onValueChangeValue,selectedMaterial,materialList
 }) => {
 
     function renderItem({item}, index){
@@ -25,8 +26,10 @@ export const ShoppingList = ({
         />
     }
 
+
     return (
         <FlatList
+        ListHeaderComponent={isCart ? null :<FilterDropdown onValueChangeValue={onValueChangeValue} selectedMaterial={selectedMaterial} data={materialList}/>}
         contentContainerStyle={{alignItems:'center',justifyContent:'center'}}
         ListEmptyComponent={isLoading ? <ActivityIndicator/> : <Text>No Items found</Text>}
         keyExtractor={item=>item.name}
