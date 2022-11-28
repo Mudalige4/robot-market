@@ -6,10 +6,23 @@ import CartModal from './models/CartModel';
 
 export const HeaderBar=({title, robotsInCart,onPressRemoveFromCart,onPressAddFromCart})=>{
   const [cartVisible, setCartVisible] = useState(false)
+  
+  function getTotalCartRobots(){
+    let count = 0
+
+    robotsInCart.map(item=>{
+      if(item.cart >0){
+        count = item.cart + count
+      }
+    })
+
+    return count
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.fontStyle}>{title}</Text>
-      <CartButton onPress={()=>setCartVisible(true)}/>
+      <CartButton isHeader totalCartRobots={getTotalCartRobots()} onPress={()=>setCartVisible(true)}/>
       <CartModal onPressRemoveFromCart={onPressRemoveFromCart} onPressAddFromCart={onPressAddFromCart} closeModal={()=>setCartVisible(false)} robotsList={robotsInCart} modalVisible={cartVisible}/>
     </View>
   );

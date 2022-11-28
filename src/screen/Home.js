@@ -84,7 +84,8 @@ export default function Home() {
                 price,
                 stock,
                 createdAt,
-                material
+                material,
+                cart:1
             })
         }
         
@@ -172,6 +173,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     body: {
-        padding: 6
+        padding: 6,
+        backgroundColor: '#eee',
     }
 });

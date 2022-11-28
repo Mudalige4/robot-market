@@ -27,6 +27,7 @@ export const ShoppingList = ({
 
     return (
         <FlatList
+        contentContainerStyle={{alignItems:'center',justifyContent:'center'}}
         ListEmptyComponent={isLoading ? <ActivityIndicator/> : <Text>No Items found</Text>}
         keyExtractor={item=>item.name}
             data={robotsList}

@@ -20,8 +20,8 @@ export default function CartModal({ robotsList, modalVisible, closeModal,onPress
                 <View style={styles.subContainer}>
                     <Text style={{alignSelf:'center', fontSize:20,fontWeight:'bold'}}>Cart</Text>
                     <ShoppingList isCart robotsList={robotsList} onPressAddFromCart={onPressAddFromCart} onPressRemoveFromCart={onPressRemoveFromCart} />
-                    <Text>Total Price : LKR {getTotalPrice()} </Text>
-                    <Pressable style={styles.closeButton} onPress={closeModal}><Text>CLOSE</Text></Pressable>
+                    <Text style={{fontWeight:'bold',marginVertical:6}}>Total Price : LKR {getTotalPrice()} </Text>
+                    <Pressable style={styles.closeButton} onPress={closeModal}><Text style={{color:'white'}}>CLOSE</Text></Pressable>
                 </View>
             </View>
         </Modal>
@@ -30,17 +30,18 @@ export default function CartModal({ robotsList, modalVisible, closeModal,onPress
 
 const styles = StyleSheet.create({
     container: {
-        alignItems: 'center', justifyContent: 'center', flex: 1,padding:2
+        alignItems: 'center', justifyContent: 'center', flex: 1
     },
     subContainer: {
-        width: 300, height: 400, backgroundColor: 'white',alignSelf:'center'
+        width: 300, height: 400, backgroundColor: 'white',alignSelf:'center',padding:6
     },
     closeButton:{
         alignItems:'center',
         justifyContent:'center',
         width:150,
         height:30,
-        alignSelf:'center'
+        alignSelf:'center',
+        backgroundColor:'red'
     }
 })
 
