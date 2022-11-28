@@ -1,38 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, FlatList, StyleSheet, Text, View } from 'react-native';
 import { CartButton } from '../CartButton'
 import { ListItem } from '../ShpoingItem/ListItem'
 
-export const ShoppingList = () => {
+export const ShoppingList = ({
+    isLoading,robotList
+}) => {
     return (
         <FlatList
+        ListEmptyComponent={isLoading ? <ActivityIndicator/> : null}
         keyExtractor={item=>item.name}
-            data={[{
-                
-                name: "test",
-                image: 'image',
-                price: 1230,
-                stock: 2,
-                createdAt: Date.now(),
-                material: 'fab'
-            },
-            {
-                name: "test1",
-                image: 'image',
-                price: 1230,
-                stock: 2,
-                createdAt: Date.now(),
-                material: 'fab'
-            },
-            {
-                name: "test2",
-                image: 'image',
-                price: 1230,
-                stock: 2,
-                createdAt: Date.now(),
-                material: 'fab'
-            }]}
-            renderItem={()=><Text>sssssss</Text>}//ListItem}
+            data={robotList}
+            renderItem={ListItem}
         />
     );
 }

@@ -8,11 +8,16 @@ const Price=({price})=>{
     )
 }
 
-export const ListItem=()=>{
+export const ListItem=({name,
+  image,
+  price,
+  stock,
+  createdAt,
+  material,}, index)=>{
   return (
     <View style={styles.container}>
       <View style={styles.topContainer}>
-        <Text>Icon</Text>
+        <Text>name</Text>
       </View>
       {/* <View style={styles.bottomContainer}>
         <Text>Title  Cetegory  others</Text>
