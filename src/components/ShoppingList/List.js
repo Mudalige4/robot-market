@@ -5,7 +5,7 @@ import { ListItem } from '../ShpoingItem/ListItem'
 
 export const ShoppingList = ({
     isLoading,robotsList,
-    onPressAddToCart
+    onPressAddToCart,isCart,onPressAddFromCart,onPressRemoveFromCart
 }) => {
 
     function renderItem({item}, index){
@@ -17,12 +17,17 @@ export const ShoppingList = ({
         createdAt={item.createdAt}
         material={item.material}
         onPressAddToCart={onPressAddToCart}
+        cart={item.cart}
+        isCart={isCart}
+        onPressRemoveFromCart={onPressRemoveFromCart}
+        onPressAddFromCart={onPressAddFromCart}
+
         />
     }
 
     return (
         <FlatList
-        ListEmptyComponent={isLoading ? <ActivityIndicator/> : null}
+        ListEmptyComponent={isLoading ? <ActivityIndicator/> : <Text>No Items found</Text>}
         keyExtractor={item=>item.name}
             data={robotsList}
             renderItem={renderItem}

@@ -1,12 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
+import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import {CartButton} from './CartButton'
+import CartModal from './models/CartModel';
 
-export const HeaderBar=({title})=>{
+export const HeaderBar=({title, robotsInCart,onPressRemoveFromCart,onPressAddFromCart})=>{
+  const [cartVisible, setCartVisible] = useState(false)
   return (
     <View style={styles.container}>
       <Text style={styles.fontStyle}>{title}</Text>
-      <CartButton onPress={()=>{}}/>
+      <CartButton onPress={()=>setCartVisible(true)}/>
+      <CartModal onPressRemoveFromCart={onPressRemoveFromCart} onPressAddFromCart={onPressAddFromCart} closeModal={()=>setCartVisible(false)} robotsList={robotsInCart} modalVisible={cartVisible}/>
     </View>
   );
 }
